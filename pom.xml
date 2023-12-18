@@ -31,6 +31,11 @@
             <version>7.7.0</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.codeborne</groupId>
+            <artifactId>selenide</artifactId>
+            <version>7.0.4</version>
+        </dependency>
     </dependencies>
 
 </project>
