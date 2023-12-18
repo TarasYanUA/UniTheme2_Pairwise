@@ -12,16 +12,19 @@ public class ReadOnly {
         HSSFSheet myExcelSheet = myExcelBook.getSheetAt(0);
 
         int rowNumbers = myExcelSheet.getPhysicalNumberOfRows();
+        String[][] testCases = new String[rowNumbers][9];
 
         for (int k = 1; k < rowNumbers; k++) {
             HSSFRow row = myExcelSheet.getRow(k);
                 for (int i = 0; i < 8; i++) {
                     String stringOfRow = row.getCell(i).getStringCellValue();
-                    System.out.print(stringOfRow + ", ");
+                    testCases[k][i] = stringOfRow;
             }
-            System.out.println(" ");
         }
         System.out.println(" ");
+
+        System.out.println(java.util.Arrays.deepToString(testCases));
+        //System.out.println(testCases[1][0]);
         myExcelBook.close();
     }
 }
