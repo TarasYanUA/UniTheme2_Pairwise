@@ -1,3 +1,4 @@
+import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
@@ -7,6 +8,8 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Date;
+import java.util.Iterator;
+import java.util.Objects;
 
 public class WorkWithExcel {
     @Test(priority = 1)
@@ -59,6 +62,30 @@ public class WorkWithExcel {
             System.out.println("birthdate :" + birthdate);
         }
 
+        myExcelBook.close();
+    }
+
+    @Test(priority = 3)
+        public static void readExcel_Iterator() throws IOException{
+        HSSFWorkbook myExcelBook = new HSSFWorkbook(new FileInputStream("Second test.xlsx"));
+        HSSFSheet myExcelSheet = myExcelBook.getSheetAt(0);
+
+        int rowNumbers = myExcelSheet.getPhysicalNumberOfRows();
+
+                Iterator<Row> rowIterator = myExcelSheet.rowIterator();
+                HSSFRow row = null;
+                while (rowIterator.hasNext()) {
+                    row = (HSSFRow) rowIterator.next();
+                }
+
+                Iterator<Cell> cellIterator = Objects.requireNonNull(row).cellIterator();
+                while (cellIterator.hasNext()) {
+                    HSSFCell cell = (HSSFCell) cellIterator.next();
+                    System.out.println(cell);
+            }
+            System.out.println(" ");
+
+        System.out.println(" ");
         myExcelBook.close();
     }
 }

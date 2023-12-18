@@ -17,7 +17,7 @@ public class ReadOnly {
             HSSFRow row = myExcelSheet.getRow(k);
                 for (int i = 0; i < 8; i++) {
                     String stringOfRow = row.getCell(i).getStringCellValue();
-                    System.out.println(stringOfRow);
+                    System.out.print(stringOfRow + ", ");
             }
             System.out.println(" ");
         }
