@@ -12,7 +12,7 @@ public class ReadOnly {
         HSSFSheet myExcelSheet = myExcelBook.getSheetAt(0);
 
         int rowNumbers = myExcelSheet.getPhysicalNumberOfRows();
-        String[][] testCases = new String[rowNumbers][9];
+        String[][] testCases = new String[rowNumbers][8];
 
         for (int k = 1; k < rowNumbers; k++) {
             HSSFRow row = myExcelSheet.getRow(k);
