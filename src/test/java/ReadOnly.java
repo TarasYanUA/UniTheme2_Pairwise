@@ -11,12 +11,15 @@ public class ReadOnly {
         HSSFWorkbook myExcelBook = new HSSFWorkbook(new FileInputStream("Second test.xlsx"));
         HSSFSheet myExcelSheet = myExcelBook.getSheetAt(0);
 
-        for (int k = 1; k <= 11; k++) {
+        int rowNumbers = myExcelSheet.getPhysicalNumberOfRows();
+
+        for (int k = 1; k < rowNumbers; k++) {
             HSSFRow row = myExcelSheet.getRow(k);
-            for (int i = 0; i < 8; i++) {
-                String stringOfRow = row.getCell(i).getStringCellValue();
-                System.out.println(stringOfRow);
+                for (int i = 0; i < 8; i++) {
+                    String stringOfRow = row.getCell(i).getStringCellValue();
+                    System.out.println(stringOfRow);
             }
+            System.out.println(" ");
         }
         System.out.println(" ");
         myExcelBook.close();
