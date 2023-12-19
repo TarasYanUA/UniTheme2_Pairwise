@@ -22,14 +22,13 @@ public class TestCase_01_Test extends TestRunner {
         System.out.println("Number of columns: " + columnNumber);
 
         testCases = new String[rowNumber-1][columnNumber];
+        System.out.println("\nДвумерный массив:");
 
         for (int k = 1; k < rowNumber; k++) {
             HSSFRow row = myExcelSheet.getRow(k);
             for (int i = 0; i < columnNumber; i++) {
                 String stringOfRow = row.getCell(i).getStringCellValue();
-                if(stringOfRow.contains("ColSch")) {
                     testCases[k-1][i] = stringOfRow;
-                }
             }
         }
         System.out.println(java.util.Arrays.deepToString(testCases));
@@ -40,19 +39,15 @@ public class TestCase_01_Test extends TestRunner {
     public void setConfigurationsAutomatically_TestCase_01() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         CsCart csCart = new CsCart();
         ColorScheme colorScheme = new ColorScheme();
-        System.out.println("Список наших тест-кейсов:");
-
-        //Пробуем работать с массивом
+        System.out.println("\nСписок наших тест-кейсов:");
         for(int i = 0; i < testCases.length; i++) {
-            for(int k = 0; k< testCases[i].length; k++) {
+            for(int k = 0; k < testCases[i].length; k++) {
                 System.out.println(testCases[i][k]);
-                if(i == 0) {
-                    colorScheme.getClass().getMethod(testCases[i][k]).invoke(colorScheme); //динамический вызов метода из класса по названию метода
-                }
+                colorScheme.getClass().getMethod(testCases[i][k]).invoke(colorScheme); //динамический вызов метода из класса по названию метода
             }
+            csCart.button_Save.click(); //Здесь перечень шагов, которые нужно выполнить после настроек
             System.out.println();
         }
-        csCart.button_Save.click();
     }
 
 /*    @Test(priority = 20)
