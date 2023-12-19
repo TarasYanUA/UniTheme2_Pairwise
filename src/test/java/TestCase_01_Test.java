@@ -39,14 +39,13 @@ public class TestCase_01_Test extends TestRunner {
     public void setConfigurationsAutomatically_TestCase_01() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         CsCart csCart = new CsCart();
         ColorScheme colorScheme = new ColorScheme();
-        System.out.println("\nСписок наших тест-кейсов:");
         for(int i = 0; i < testCases.length; i++) {
+            System.out.println("\n Тест-кейс №" + (i+1));
             for(int k = 0; k < testCases[i].length; k++) {
                 System.out.println(testCases[i][k]);
                 colorScheme.getClass().getMethod(testCases[i][k]).invoke(colorScheme); //динамический вызов метода из класса по названию метода
             }
             csCart.button_Save.click(); //Здесь перечень шагов, которые нужно выполнить после настроек
-            System.out.println();
         }
     }
 
