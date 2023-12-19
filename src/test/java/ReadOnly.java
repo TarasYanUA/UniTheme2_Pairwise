@@ -28,5 +28,9 @@ public class ReadOnly {
         System.out.println(java.util.Arrays.deepToString(testCases));
         //System.out.println(testCases[1][0]);
         myExcelBook.close();
+
+        //Пробуем работать с массивом
+        String testCase_01 = "colorScheme." + testCases[0][0] + "();";
+        System.out.println(testCase_01);
     }
 }
