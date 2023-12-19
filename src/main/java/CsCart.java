@@ -1,9 +1,9 @@
 import com.codeborne.selenide.SelenideElement;
-
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
 
 public class CsCart {
+    SelenideElement button_Save = $(".cm-submit.btn-primary");
     SelenideElement addonsDropDown = $("#elm_menu_addons");
     SelenideElement addonsManagementPage = $("#elm_menu_addons_downloaded_add_ons");
     private void navigateToAddonsPage() {
@@ -19,10 +19,10 @@ public class CsCart {
 
     SelenideElement themeSectionsOnManagementPage = $x("//tr[@id='addon_abt__unitheme2']//button[@class='btn dropdown-toggle']");
     SelenideElement colorSchemeSettings = $("div[class='btn-group dropleft open'] a[href$='abt__ut2.less_settings']");
-    public ColorScheme navigateTo_ColorSchemeSettings(){
+    public void navigateTo_ColorSchemeSettings(){
         navigateToAddonsPage();
         themeSectionsOnManagementPage.click();
         colorSchemeSettings.click();
-        return new ColorScheme();
+        ColorScheme.setActiveColorScheme();
     }
 }

@@ -1,14 +1,12 @@
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
-import org.openqa.selenium.By;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Selenide.$;
 
 public class TestRunner {
-    public static final String BASIC_URL = "https://trs.test.abt.team/4172ultru/admin.php?dispatch=addons.manage";
+    public static final String BASIC_URL = "https://trs.test.abt.team/4172ultru/admin.php?dispatch=settings.manage&section_id=Appearance";
 
     @BeforeClass
     public void openBrowser() {
