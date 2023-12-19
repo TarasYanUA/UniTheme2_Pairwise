@@ -4,9 +4,10 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 public class TestRunner {
-    public static final String BASIC_URL = "https://trs.test.abt.team/4172ultru/admin.php?dispatch=settings.manage&section_id=Appearance";
+    public static final String BASIC_URL = "https://trs.test.abt.team/4172ultru/admin.php?dispatch=addons.manage";
 
     @BeforeClass
     public void openBrowser() {
@@ -24,6 +25,12 @@ public class TestRunner {
         Selenide.closeWebDriver();
     }
 
+    public void shiftBrowserTab(int tabNumber){
+        getWebDriver().getWindowHandle(); switchTo().window(tabNumber);
+        if($(".cm-notification-close").exists()){
+            $(".cm-notification-close").click();
+        }
+    }
     public void navigateToProductPage(){
         $x("//li[@class='dropdown nav__header-main-menu-item ']//a[@href='#products']").hover();
         $x("//span[text()='Товары']").click();

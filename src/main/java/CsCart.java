@@ -1,6 +1,8 @@
+import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$x;
+import org.openqa.selenium.By;
+
+import static com.codeborne.selenide.Selenide.*;
 
 public class CsCart {
     SelenideElement button_Save = $(".cm-submit.btn-primary");
@@ -10,6 +12,25 @@ public class CsCart {
         addonsDropDown.hover();
         addonsManagementPage.click();
     }
+
+
+    SelenideElement menuDesign = $("#elm_menu_design");
+    SelenideElement section_Layouts = $("#elm_menu_design_layouts");
+    SelenideElement layout_Lightv2 = $("a[href$='block_manager.manage&s_layout=6']");
+    SelenideElement gearwheelOfActiveLayout = $(".with-menu.active .dropdown-toggle");
+    SelenideElement button_makeByDefault = $(".with-menu.active a[href*='block_manager.set_default_layout']");
+    public void navigateToSection_DesignLayouts(){
+        menuDesign.hover();
+        section_Layouts.click();
+        layout_Lightv2.click();
+        gearwheelOfActiveLayout.hover().click();
+        if(!$$(".with-menu.active a[href*='block_manager.set_default_layout']").isEmpty()){
+            button_makeByDefault.click();
+            Selenide.sleep(1500);
+        }
+    }
+
+
 
     SelenideElement storefrontMainPage = $(".cs-icon.icon-shopping-cart");
     public Storefront navigateToStorefront(){

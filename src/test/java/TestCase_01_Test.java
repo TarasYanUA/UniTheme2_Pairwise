@@ -11,7 +11,15 @@ public class TestCase_01_Test extends TestRunner {
     static int columnNumber;
     static String[][] testCases = new String[0][0];
     static String testCase_01 = "";
+
     @Test(priority = 1)
+    public void preconditions(){
+        CsCart csCart = new CsCart();
+        csCart.navigateToSection_DesignLayouts();
+        csCart.navigateTo_ColorSchemeSettings();
+    }
+
+    @Test(priority = 2)
     public static void readFromExcel() throws IOException {
         HSSFWorkbook myExcelBook = new HSSFWorkbook(new FileInputStream("Second test.xlsx"));
         HSSFSheet myExcelSheet = myExcelBook.getSheetAt(0);
@@ -46,6 +54,9 @@ public class TestCase_01_Test extends TestRunner {
                 colorScheme.getClass().getMethod(testCases[i][k]).invoke(colorScheme); //динамический вызов метода из класса по названию метода
             }
             csCart.button_Save.click(); //Здесь перечень шагов, которые нужно выполнить после настроек
+            Storefront storefront = csCart.navigateToStorefront();
+            shiftBrowserTab(i++);
+
         }
     }
 
