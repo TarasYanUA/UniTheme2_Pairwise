@@ -1,7 +1,5 @@
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
-import org.openqa.selenium.By;
-
 import static com.codeborne.selenide.Selenide.*;
 
 public class CsCart {
@@ -33,7 +31,7 @@ public class CsCart {
 
 
     SelenideElement storefrontMainPage = $(".cs-icon.icon-shopping-cart");
-    public Storefront navigateToStorefront(){
+    public Storefront navigateTo_Storefront(){
         storefrontMainPage.click();
         return new Storefront();
     }

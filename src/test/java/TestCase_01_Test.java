@@ -12,12 +12,12 @@ public class TestCase_01_Test extends TestRunner {
     static String[][] testCases = new String[0][0];
     static String testCase_01 = "";
 
-    @Test(priority = 1)
+/*    @Test(priority = 1)
     public void preconditions(){
         CsCart csCart = new CsCart();
         csCart.navigateToSection_DesignLayouts();
         csCart.navigateTo_ColorSchemeSettings();
-    }
+    }*/
 
     @Test(priority = 2)
     public static void readFromExcel() throws IOException {
@@ -48,13 +48,13 @@ public class TestCase_01_Test extends TestRunner {
         CsCart csCart = new CsCart();
         ColorScheme colorScheme = new ColorScheme();
         for(int i = 0; i < testCases.length; i++) {
-            System.out.println("\n Тест-кейс №" + (i+1));
+            System.out.println("\n Тест-кейс №" + (i+1));   //Тарас, МОЖЕТ здесь i+1 неправильно. Может сделать i=1 вместо i=0
             for(int k = 0; k < testCases[i].length; k++) {
                 System.out.println(testCases[i][k]);
                 colorScheme.getClass().getMethod(testCases[i][k]).invoke(colorScheme); //динамический вызов метода из класса по названию метода
             }
             csCart.button_Save.click(); //Здесь перечень шагов, которые нужно выполнить после настроек
-            Storefront storefront = csCart.navigateToStorefront();
+            Storefront storefront = csCart.navigateTo_Storefront();
             shiftBrowserTab(i++);
 
         }
