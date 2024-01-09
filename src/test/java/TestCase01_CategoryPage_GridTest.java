@@ -1,3 +1,4 @@
+import com.codeborne.selenide.Selenide;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
@@ -6,11 +7,10 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 
-public class TestCase_01_Test extends TestRunner {
+public class TestCase01_CategoryPage_GridTest extends TestRunner {
     static int rowNumber;
     static int columnNumber;
     static String[][] testCases = new String[0][0];
-    static String testCase_01 = "";
 
 /*    @Test(priority = 1)
     public void preconditions(){
@@ -20,8 +20,9 @@ public class TestCase_01_Test extends TestRunner {
     }*/
 
     @Test(priority = 2)
-    public static void readFromExcel() throws IOException {
-        HSSFWorkbook myExcelBook = new HSSFWorkbook(new FileInputStream("Second test.xlsx"));
+    public void readFromExcel() throws IOException {
+        String className = this.getClass().getSimpleName();
+        HSSFWorkbook myExcelBook = new HSSFWorkbook(new FileInputStream(className + ".xlsx"));
         HSSFSheet myExcelSheet = myExcelBook.getSheetAt(0);
 
         rowNumber = myExcelSheet.getPhysicalNumberOfRows();
@@ -44,7 +45,7 @@ public class TestCase_01_Test extends TestRunner {
     }
 
     @Test(priority = 10)
-    public void setConfigurationsAutomatically_TestCase_01() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+    public void check_TestCase01_CategoryPage_Grid() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         CsCart csCart = new CsCart();
         ColorScheme colorScheme = new ColorScheme();
         for(int i = 0; i < testCases.length; i++) {
@@ -54,9 +55,12 @@ public class TestCase_01_Test extends TestRunner {
                 colorScheme.getClass().getMethod(testCases[i][k]).invoke(colorScheme); //динамический вызов метода из класса по названию метода
             }
             csCart.button_Save.click(); //Здесь перечень шагов, которые нужно выполнить после настроек
-            Storefront storefront = csCart.navigateTo_Storefront();
-            shiftBrowserTab(i++);
+            csCart.navigateTo_Storefront();
+            shiftBrowserTab(1 + i);
+            Storefront storefront = new Storefront();
 
+            String makeScreenshot = Selenide.screenshot("Test-case 01." + i + " category page 'Grid'");
+            shiftBrowserTab(0);
         }
     }
 

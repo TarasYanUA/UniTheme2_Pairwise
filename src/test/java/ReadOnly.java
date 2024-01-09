@@ -7,8 +7,8 @@ import java.io.IOException;
 
 public class ReadOnly {
     @Test
-    public static void readFromExcel() throws IOException {
-        HSSFWorkbook myExcelBook = new HSSFWorkbook(new FileInputStream("Second test.xlsx"));
+    public void readFromExcel() throws IOException {
+        HSSFWorkbook myExcelBook = new HSSFWorkbook(new FileInputStream("TestCase01_CategoryPage_GridTest.xlsx"));
         HSSFSheet myExcelSheet = myExcelBook.getSheetAt(0);
 
         int rowNumber = myExcelSheet.getPhysicalNumberOfRows();

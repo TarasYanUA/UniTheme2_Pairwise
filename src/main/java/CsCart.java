@@ -31,9 +31,8 @@ public class CsCart {
 
 
     SelenideElement storefrontMainPage = $(".cs-icon.icon-shopping-cart");
-    public Storefront navigateTo_Storefront(){
+    public void navigateTo_Storefront(){
         storefrontMainPage.click();
-        return new Storefront();
     }
 
     SelenideElement themeSectionsOnManagementPage = $x("//tr[@id='addon_abt__unitheme2']//button[@class='btn dropdown-toggle']");

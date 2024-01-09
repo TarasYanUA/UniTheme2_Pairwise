@@ -66,10 +66,9 @@ public class WorkWithExcel {
     }
 
     @Test(priority = 3)
-        public static void readExcel_Iterator() throws IOException{
-        HSSFWorkbook myExcelBook = new HSSFWorkbook(new FileInputStream("Second test.xlsx"));
+        public void readExcel_Iterator() throws IOException{
+        HSSFWorkbook myExcelBook = new HSSFWorkbook(new FileInputStream("TestCase01_CategoryPage_GridTest.xlsx"));
         HSSFSheet myExcelSheet = myExcelBook.getSheetAt(0);
-
         int rowNumbers = myExcelSheet.getPhysicalNumberOfRows();
 
                 Iterator<Row> rowIterator = myExcelSheet.rowIterator();
