@@ -48,7 +48,7 @@ public class TestCase_01_Test extends TestRunner {
         CsCart csCart = new CsCart();
         ColorScheme colorScheme = new ColorScheme();
         for(int i = 0; i < testCases.length; i++) {
-            System.out.println("\n Тест-кейс №" + (i+1));   //Тарас, МОЖЕТ здесь i+1 неправильно. Может сделать i=1 вместо i=0
+            System.out.println("\n  Тест-кейс №" + (i));
             for(int k = 0; k < testCases[i].length; k++) {
                 System.out.println(testCases[i][k]);
                 colorScheme.getClass().getMethod(testCases[i][k]).invoke(colorScheme); //динамический вызов метода из класса по названию метода
