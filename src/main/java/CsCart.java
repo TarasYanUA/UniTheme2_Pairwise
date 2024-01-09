@@ -31,10 +31,6 @@ public class CsCart {
 
 
     SelenideElement storefrontMainPage = $(".cs-icon.icon-shopping-cart");
-    public void navigateTo_Storefront(){
-        storefrontMainPage.click();
-    }
-
     SelenideElement themeSectionsOnManagementPage = $x("//tr[@id='addon_abt__unitheme2']//button[@class='btn dropdown-toggle']");
     SelenideElement colorSchemeSettings = $("div[class='btn-group dropleft open'] a[href$='abt__ut2.less_settings']");
     public void navigateTo_ColorSchemeSettings(){
