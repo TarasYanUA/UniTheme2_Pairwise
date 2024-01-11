@@ -13,7 +13,6 @@ import java.util.Objects;
 
 public class WorkWithExcel {
     @Test(priority = 1)
-    @SuppressWarnings("deprecation")
     public static void writeIntoExcel() throws IOException {
         Workbook book = new HSSFWorkbook();
         Sheet sheet = book.createSheet("Birthdays");
