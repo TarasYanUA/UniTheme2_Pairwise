@@ -1,7 +1,6 @@
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
-
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
 
@@ -67,35 +66,35 @@ public class ColorScheme extends CsCart {
         select_General_RoundCornersForInterfaceElements.selectOptionByValue("full");
     }
 
-    SelenideElement checkboxDisplayHeadersInCapitalLetters = $(By.id("settings.abt__ut2.general.use_titles_uppercase"));
+    SelenideElement checkbox_DisplayHeadersInCapitalLetters = $(By.id("settings.abt__ut2.general.use_titles_uppercase"));
 
     public void ColSch_DHICL_On() {
         condition_ColorSchemePage_tabGeneral();
-        if (!checkboxDisplayHeadersInCapitalLetters.isSelected()) {
-            checkboxDisplayHeadersInCapitalLetters.click();
+        if (!checkbox_DisplayHeadersInCapitalLetters.isSelected()) {
+            checkbox_DisplayHeadersInCapitalLetters.click();
         }
     }
 
     public void ColSch_DHICL_Off() {
         condition_ColorSchemePage_tabGeneral();
-        if (checkboxDisplayHeadersInCapitalLetters.isSelected()) {
-            checkboxDisplayHeadersInCapitalLetters.click();
+        if (checkbox_DisplayHeadersInCapitalLetters.isSelected()) {
+            checkbox_DisplayHeadersInCapitalLetters.click();
         }
     }
 
-    SelenideElement checkboxDisplayTextInCapitalLetters = $(By.id("settings.abt__ut2.general.buttons.use_text_uppercase"));
+    SelenideElement checkbox_DisplayTextInCapitalLetters = $(By.id("settings.abt__ut2.general.buttons.use_text_uppercase"));
 
     public void ColSch_DTICL_On() {
         condition_ColorSchemePage_tabGeneral();
-        if (!checkboxDisplayTextInCapitalLetters.isSelected()) {
-            checkboxDisplayTextInCapitalLetters.click();
+        if (!checkbox_DisplayTextInCapitalLetters.isSelected()) {
+            checkbox_DisplayTextInCapitalLetters.click();
         }
     }
 
     public void ColSch_DTICL_Off() {
         condition_ColorSchemePage_tabGeneral();
-        if (checkboxDisplayTextInCapitalLetters.isSelected()) {
-            checkboxDisplayTextInCapitalLetters.click();
+        if (checkbox_DisplayTextInCapitalLetters.isSelected()) {
+            checkbox_DisplayTextInCapitalLetters.click();
         }
     }
 
@@ -118,59 +117,59 @@ public class ColorScheme extends CsCart {
         select_General_FrameTypeOfProduct.selectOptionByValue("solid_with_margins");
     }
 
-    SelenideElement checkboxAddBackgroundForProductImages = $(By.id("settings.abt__ut2.product_list.mask_images_gallery"));
+    SelenideElement checkbox_AddBackgroundForProductImages = $(By.id("settings.abt__ut2.product_list.mask_images_gallery"));
 
     public void ColSch_ABMFPI_On() {
         condition_ColorSchemePage_tabProductLists();
-        if (!checkboxAddBackgroundForProductImages.isSelected()) {
-            checkboxAddBackgroundForProductImages.click();
+        if (!checkbox_AddBackgroundForProductImages.isSelected()) {
+            checkbox_AddBackgroundForProductImages.click();
         }
     }
 
     public void ColSch_ABMFPI_Off() {
         condition_ColorSchemePage_tabProductLists();
-        if (checkboxAddBackgroundForProductImages.isSelected()) {
-            checkboxAddBackgroundForProductImages.click();
+        if (checkbox_AddBackgroundForProductImages.isSelected()) {
+            checkbox_AddBackgroundForProductImages.click();
         }
     }
 
-    SelenideElement selectUseElementsAlignment = $(By.id("settings.abt__ut2.product_list.use_elements_alignment"));
+    SelenideElement select_UseElementsAlignment = $(By.id("settings.abt__ut2.product_list.use_elements_alignment"));
 
     public void ColSch_UEA_Use() {
         condition_ColorSchemePage_tabProductLists();
-        selectUseElementsAlignment.selectOptionByValue("use");
+        select_UseElementsAlignment.selectOptionByValue("use");
     }
 
     public void ColSch_UEA_Dont() {
         condition_ColorSchemePage_tabProductLists();
-        selectUseElementsAlignment.selectOptionByValue("do_not_use");
+        select_UseElementsAlignment.selectOptionByValue("do_not_use");
     }
 
-    SelenideElement checkboxExpandGridItemOnHover = $(By.id("settings.abt__ut2.product_list.extend_grid_item_on_hover"));
+    SelenideElement checkbox_ExpandGridItemOnHover = $(By.id("settings.abt__ut2.product_list.extend_grid_item_on_hover"));
 
     public void ColSch_EGIOH_On() {
         condition_ColorSchemePage_tabProductLists();
-        if (!checkboxExpandGridItemOnHover.isSelected()) {
-            checkboxExpandGridItemOnHover.click();
+        if (!checkbox_ExpandGridItemOnHover.isSelected()) {
+            checkbox_ExpandGridItemOnHover.click();
         }
     }
 
     public void ColSch_EGIOH_Off() {
         condition_ColorSchemePage_tabProductLists();
-        if (checkboxExpandGridItemOnHover.isSelected()) {
-            checkboxExpandGridItemOnHover.click();
+        if (checkbox_ExpandGridItemOnHover.isSelected()) {
+            checkbox_ExpandGridItemOnHover.click();
         }
     }
 
-    SelenideElement selectFontWeightForProductName = $(By.id("settings.abt__ut2.product_list.grid-list.product_name_font_weight"));
+    SelenideElement select_FontWeightForProductName = $(By.id("settings.abt__ut2.product_list.grid-list.product_name_font_weight"));
 
     public void ColSch_FWFPN_Normal() {
         condition_ColorSchemePage_tabProductLists();
-        selectFontWeightForProductName.selectOptionByValue("normal");
+        select_FontWeightForProductName.selectOptionByValue("normal");
     }
 
     public void ColSch_FWFPN_Bold() {
         condition_ColorSchemePage_tabProductLists();
-        selectFontWeightForProductName.selectOptionByValue("bold");
+        select_FontWeightForProductName.selectOptionByValue("bold");
     }
 }

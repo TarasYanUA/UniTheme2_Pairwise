@@ -1,0 +1,29 @@
+Round corners for interface elements: ColSch_RCFIE_Dont, ColSch_RCFIE_Little, ColSch_RCFIE_Fully 
+Display headers in capital letters: ColSch_DHICL_On, ColSch_DHICL_Off  
+Display text in capital letters: ColSch_DTICL_On, ColSch_DTICL_Off  
+Frame type of the product in the grid: ColSch_FTPG_Not, ColSch_FTPG_Without, ColSch_FTPG_With 
+Add background/mask for product images: ColSch_ABMFPI_On, ColSch_ABMFPI_Off  
+Use elements alignment: ColSch_UEA_Use, ColSch_UEA_Dont  
+Expand grid item on hover: ColSch_EGIOH_On, ColSch_EGIOH_Off  
+Font weight for product name: ColSch_FWFPN_Normal, ColSch_FWFPN_Bold  
+Show subcategories on category pages: Theme_SSOCP_On, Theme_SSOCP_Off  
+Display category description: Theme_DCD_After, Theme_DCD_Before, Theme_DCD_Dont 
+Decolorize out of stock products: Theme_DOOSP_On, Theme_DOOSP_Off  
+Price display format: Theme_PDF_1, Theme_PDF_2, Theme_PDF_3, Theme_PDF_4 
+Show price at the top: Theme_SPATT_On, Theme_SPATT_Off  
+Display empty stars of product rating: Theme_DESOPR_On, Theme_DESOPR_Off  
+Display common value of product rating: Theme_DCVOPR_On, Theme_DCVOPR_Off  
+Number of lines in the product name: Theme_NOLITPN_1, Theme_NOLITPN_2, Theme_NOLITPN_3, Theme_NOLITPN_4 
+Show product code (Sku): Theme_SPC_On, Theme_SPC_Off  
+Display availability status: Theme_DAS_On, Theme_DAS_Off  
+Show quantity changer: Theme_SQC_On, Theme_SQC_Off  
+Show "Add to Cart" button: Theme_SATCB_Dont, Theme_SATCB_Simplified, Theme_SATCB_Icon, Theme_SATCB_Text, Theme_SATCB_Both, 
+Additional product information: Theme_API_Dont, Theme_API_Desc, Theme_API_Features, Theme_API_Variations, Theme_API_DescAndVar, Theme_API_FeatAndVar
+Show additional information on hover: Theme_SAIOH_On, Theme_SAIOH_Off  
+Show brand logo: Theme_SBL_On, Theme_SBL_Off  
+Show "You save": Theme_SYS_On, Theme_SYS_Off  
+Show standard image gallery: Theme_SSIG_Dont, Theme_SSIG_Dots, Theme_SSIG_Arrows 
+Switch product image when hovering mouse pointer: Theme_SPIWHMP_Dont, Theme_SPIWHMP_Dots, Theme_SPIWHMP_Stripes 
+
+if [Additional product information] = "Theme_API_Dont" then [Show additional information on hover] = "Theme_SAIOH_Off";
+if [Show standard image gallery] = "Theme_SSIG_Dots" OR ([Show standard image gallery] = "Theme_SSIG_Arrows") then [Switch product image when hovering mouse pointer] = "Theme_SPIWHMP_Dont";
