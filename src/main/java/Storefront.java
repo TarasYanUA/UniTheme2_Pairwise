@@ -9,10 +9,11 @@ public class Storefront {
     SelenideElement cookie = $(".cm-btn-success");
     SelenideElement blockWithProducts = $("div.ty-mainbox-container.clearfix .ut2-gl__image");
     SelenideElement horizontalMenu_menuElectronic = $(".ty-menu__wrapper .ty-menu-item__electronics");
-    private final SelenideElement horizontalMenu_menuPhones = $x("//li[contains(@class, 'ty-menu-item__electronics')]//div[@data-elem-index='3']//span");
-    public void navigateToHorizontalMenu_Phones(){
+    private final SelenideElement horizontalMenu_menuHTC = $x("//li[contains(@class, 'ty-menu-item__electronics')]//a[@title='HTC']");
+    public void navigateToHorizontalMenu_HTC(){
         executeJavaScript("window.scrollTo(0, -document.body.scrollHeight);");
         horizontalMenu_menuElectronic.hover().click();
+        horizontalMenu_menuHTC.click();
     }
     private final SelenideElement grid_ProductListView = $(".ty-icon.ty-icon-products-multicolumns");
     public void navigateToProductListView_Grid(){
