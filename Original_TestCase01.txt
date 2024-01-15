@@ -6,24 +6,24 @@ Add background/mask for product images: ColSch_ABMFPI_On, ColSch_ABMFPI_Off
 Use elements alignment: ColSch_UEA_Use, ColSch_UEA_Dont  
 Expand grid item on hover: ColSch_EGIOH_On, ColSch_EGIOH_Off  
 Font weight for product name: ColSch_FWFPN_Normal, ColSch_FWFPN_Bold  
-Show subcategories on category pages: Theme_SSOCP_On, Theme_SSOCP_Off  
-Display category description: Theme_DCD_After, Theme_DCD_Before, Theme_DCD_Dont 
-Decolorize out of stock products: Theme_DOOSP_On, Theme_DOOSP_Off  
-Price display format: Theme_PDF_1, Theme_PDF_2, Theme_PDF_3, Theme_PDF_4 
-Show price at the top: Theme_SPATT_On, Theme_SPATT_Off  
-Display empty stars of product rating: Theme_DESOPR_On, Theme_DESOPR_Off  
-Display common value of product rating: Theme_DCVOPR_On, Theme_DCVOPR_Off  
-Number of lines in the product name: Theme_NOLITPN_1, Theme_NOLITPN_2, Theme_NOLITPN_3, Theme_NOLITPN_4 
-Show product code (Sku): Theme_SPC_On, Theme_SPC_Off  
-Display availability status: Theme_DAS_On, Theme_DAS_Off  
-Show quantity changer: Theme_SQC_On, Theme_SQC_Off  
-Show "Add to Cart" button: Theme_SATCB_Dont, Theme_SATCB_Simplified, Theme_SATCB_Icon, Theme_SATCB_Text, Theme_SATCB_Both, 
-Additional product information: Theme_API_Dont, Theme_API_Desc, Theme_API_Features, Theme_API_Variations, Theme_API_DescAndVar, Theme_API_FeatAndVar
-Show additional information on hover: Theme_SAIOH_On, Theme_SAIOH_Off  
-Show brand logo: Theme_SBL_On, Theme_SBL_Off  
-Show "You save": Theme_SYS_On, Theme_SYS_Off  
-Show standard image gallery: Theme_SSIG_Dont, Theme_SSIG_Dots, Theme_SSIG_Arrows 
-Switch product image when hovering mouse pointer: Theme_SPIWHMP_Dont, Theme_SPIWHMP_Dots, Theme_SPIWHMP_Stripes 
+Show subcategories on category pages: ThemeGrid_SSOCP_On, ThemeGrid_SSOCP_Off  
+Display category description: ThemeGrid_DCD_After, ThemeGrid_DCD_Before, ThemeGrid_DCD_Dont 
+Decolorize out of stock products: ThemeGrid_DOOSP_On, ThemeGrid_DOOSP_Off  
+Price display format: ThemeGrid_PDF_1, ThemeGrid_PDF_2, ThemeGrid_PDF_3, ThemeGrid_PDF_4 
+Show price at the top: ThemeGrid_SPATT_On, ThemeGrid_SPATT_Off  
+Display empty stars of product rating: ThemeGrid_DESOPR_On, ThemeGrid_DESOPR_Off  
+Display common value of product rating: ThemeGrid_DCVOPR_On, ThemeGrid_DCVOPR_Off  
+Number of lines in the product name: ThemeGrid_NOLITPN_1, ThemeGrid_NOLITPN_2, ThemeGrid_NOLITPN_3, ThemeGrid_NOLITPN_4 
+Show product code (Sku): ThemeGrid_SPC_On, ThemeGrid_SPC_Off  
+Display availability status: ThemeGrid_DAS_On, ThemeGrid_DAS_Off  
+Show quantity changer: ThemeGrid_SQC_On, ThemeGrid_SQC_Off  
+Show "Add to Cart" button: ThemeGrid_SATCB_Dont, ThemeGrid_SATCB_Simplified, ThemeGrid_SATCB_Icon, ThemeGrid_SATCB_Text, ThemeGrid_SATCB_Both, 
+Additional product information: ThemeGrid_API_Dont, ThemeGrid_API_Desc, ThemeGrid_API_Features, ThemeGrid_API_Variations, ThemeGrid_API_DescAndVar, ThemeGrid_API_FeatAndVar
+Show additional information on hover: ThemeGrid_SAIOH_On, ThemeGrid_SAIOH_Off  
+Show brand logo: ThemeGrid_SBL_On, ThemeGrid_SBL_Off  
+Show "You save": ThemeGrid_SYS_On, ThemeGrid_SYS_Off  
+Show standard image gallery: ThemeGrid_SSIG_Dont, ThemeGrid_SSIG_Dots, ThemeGrid_SSIG_Arrows 
+Switch product image when hovering mouse pointer: ThemeGrid_SPIWHMP_Dont, ThemeGrid_SPIWHMP_Dots, ThemeGrid_SPIWHMP_Stripes 
 
-if [Additional product information] = "Theme_API_Dont" then [Show additional information on hover] = "Theme_SAIOH_Off";
-if [Show standard image gallery] = "Theme_SSIG_Dots" OR ([Show standard image gallery] = "Theme_SSIG_Arrows") then [Switch product image when hovering mouse pointer] = "Theme_SPIWHMP_Dont";
+if [Additional product information] = "ThemeGrid_API_Dont" then [Show additional information on hover] = "ThemeGrid_SAIOH_Off";
+if [Show standard image gallery] = "ThemeGrid_SSIG_Dots" OR ([Show standard image gallery] = "ThemeGrid_SSIG_Arrows") then [Switch product image when hovering mouse pointer] = "ThemeGrid_SPIWHMP_Dont";
