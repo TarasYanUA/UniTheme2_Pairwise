@@ -6,6 +6,7 @@ import org.testng.annotations.Test;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
+import static com.codeborne.selenide.Selenide.switchTo;
 
 public class TestCase01_CategoryPage_GridTest extends TestRunner {
     static int rowNumber;
@@ -16,8 +17,9 @@ public class TestCase01_CategoryPage_GridTest extends TestRunner {
     @Test(priority = 1)
     public void preconditions(){
         CsCart csCart = new CsCart();
-        csCart.navigateToSection_DesignLayouts();
-        csCart.navigateTo_ColorSchemeSettings();
+        csCart.navigateToSection_DesignLayouts();   //Устанавливаем макет Light v2
+        ThemeSettings_ProductLists themeSettings_productLists = new ThemeSettings_ProductLists();
+        themeSettings_productLists.ThemeProductLists_SSOCP_Off();   //Выкл. отображение подкатегорий на странице категории
     }
 
 
@@ -65,17 +67,24 @@ public class TestCase01_CategoryPage_GridTest extends TestRunner {
     public void check_TestCase01_CategoryPage_Grid() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         CsCart csCart = new CsCart();
         ColorScheme colorScheme = new ColorScheme();
+        ThemeSettings_ProductLists themeSettings_productLists = new ThemeSettings_ProductLists();
         for (int i = 0; i < testCases.length; i++) {
-            System.out.println("\n  Тест-кейс №" + (i));
+            System.out.println("\n  Тест-кейс №" + (1 + i));
             for (int k = 0; k < testCases[i].length; k++) {
                 System.out.println(testCases[i][k]);
-                colorScheme.getClass().getMethod(testCases[i][k]).invoke(colorScheme); //динамический вызов метода из класса по названию метода
+
+                if(testCases[i][k].startsWith("ColSch_")) {
+                    colorScheme.getClass().getMethod(testCases[i][k]).invoke(colorScheme); //динамический вызов метода из класса по названию метода
+                }
+                if(testCases[i][k].startsWith("ThemeProductLists_")) {
+                    themeSettings_productLists.getClass().getMethod(testCases[i][k]).invoke(themeSettings_productLists); //динамический вызов метода из класса по названию метода
+                }
             }
             csCart.button_Save.click();
 
             //Здесь перечень шагов, которые нужно выполнить после настроек
             csCart.storefrontMainPage.click();
-            shiftBrowserTab(1 + i);
+            shiftBrowserTab(1);
             Storefront storefront = new Storefront();
             if (storefront.cookie.exists()) {
                 storefront.cookie.click();
@@ -95,7 +104,8 @@ public class TestCase01_CategoryPage_GridTest extends TestRunner {
             storefront.navigateToProductListView_Grid();
             Selenide.screenshot("Test-case 01." + i + " Category page 'Grid' (RTL)");
 
-            shiftBrowserTab(0);
+            switchTo().window(1).close();
+            switchTo().window(0);
         }
     }
 }
