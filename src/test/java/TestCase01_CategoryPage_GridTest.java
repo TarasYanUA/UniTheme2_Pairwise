@@ -13,12 +13,12 @@ public class TestCase01_CategoryPage_GridTest extends TestRunner {
     static String[][] testCases = new String[0][0];
     String className = this.getClass().getSimpleName();
 
-/*    @Test(priority = 1)
+    @Test(priority = 1)
     public void preconditions(){
         CsCart csCart = new CsCart();
         csCart.navigateToSection_DesignLayouts();
         csCart.navigateTo_ColorSchemeSettings();
-    }*/
+    }
 
 
 /*    @Test(priority = 2)
