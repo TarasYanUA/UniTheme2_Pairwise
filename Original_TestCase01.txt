@@ -6,7 +6,6 @@ Add background/mask for product images: ColSch_ABMFPI_On, ColSch_ABMFPI_Off
 Use elements alignment: ColSch_UEA_Use, ColSch_UEA_Dont  
 Expand grid item on hover: ColSch_EGIOH_On, ColSch_EGIOH_Off  
 Font weight for product name: ColSch_FWFPN_Normal, ColSch_FWFPN_Bold
-Display category description: ThemeProductLists_DCD_After, ThemeProductLists_DCD_Before, ThemeProductLists_DCD_Dont 
 Decolorize out of stock products: ThemeProductLists_DOOSP_On, ThemeProductLists_DOOSP_Off  
 Price display format: ThemeProductLists_PDF_1, ThemeProductLists_PDF_2, ThemeProductLists_PDF_3, ThemeProductLists_PDF_4 
 Show price at the top: ThemeProductLists_SPATT_On, ThemeProductLists_SPATT_Off  

@@ -20,6 +20,7 @@ public class TestCase01_CategoryPage_GridTest extends TestRunner {
         csCart.navigateToSection_DesignLayouts();   //Устанавливаем макет Light v2
         ThemeSettings_ProductLists themeSettings_productLists = new ThemeSettings_ProductLists();
         themeSettings_productLists.ThemeProductLists_SSOCP_Off();   //Выкл. отображение подкатегорий на странице категории
+        themeSettings_productLists.ThemeProductLists_DCD_Dont();    //Выкл. отображение описания категории на странице категории
     }
 
 

@@ -41,14 +41,6 @@ public class ThemeSettings_ProductLists extends CsCart {
     }
 
     SelenideElement select_DisplayCategoryDescription = $(By.id("settings.abt__ut2.category.description_position"));
-    public void ThemeProductLists_DCD_After(){
-        condition_ThemeSettings_tabCategory();
-        select_DisplayCategoryDescription.selectOptionByValue("bottom");
-    }
-    public void ThemeProductLists_DCD_Before(){
-        condition_ThemeSettings_tabCategory();
-        select_DisplayCategoryDescription.selectOptionByValue("top");
-    }
     public void ThemeProductLists_DCD_Dont(){
         condition_ThemeSettings_tabCategory();
         select_DisplayCategoryDescription.selectOptionByValue("none");
