@@ -1,6 +1,8 @@
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
+import com.codeborne.selenide.WebDriverRunner;
+
 import static com.codeborne.selenide.Selenide.*;
 
 public class Storefront {
@@ -12,6 +14,7 @@ public class Storefront {
     SelenideElement horizontalMenu_menuElectronic = $(".ty-menu__wrapper .ty-menu-item__electronics");
     private final SelenideElement horizontalMenu_menuHTC = $x("//li[contains(@class, 'ty-menu-item__electronics')]//a[@title='HTC']");
     public void navigateToHorizontalMenu_HTC(){
+        WebDriverRunner.getWebDriver().getCurrentUrl();
         executeJavaScript("window.scrollTo(0, -document.body.scrollHeight);");
         horizontalMenu_menuElectronic.hover().click();
         horizontalMenu_menuHTC.click();

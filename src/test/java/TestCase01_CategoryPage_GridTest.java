@@ -1,13 +1,12 @@
 import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.WebDriverRunner;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.testng.annotations.Test;
-
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
-
 import static com.codeborne.selenide.Selenide.*;
 
 public class TestCase01_CategoryPage_GridTest extends TestRunner {
@@ -52,7 +51,6 @@ public class TestCase01_CategoryPage_GridTest extends TestRunner {
         csCart.searchProductByCode("J00670N9NC");
         csCart.setRecommendedPrice("19000");
         csCart.button_Save.click();
-
     }
 
     @Test(priority = 2, dependsOnMethods = "preconditions")
@@ -101,13 +99,16 @@ public class TestCase01_CategoryPage_GridTest extends TestRunner {
             //Здесь перечень шагов, которые нужно выполнить после настроек
             csCart.storefrontMainPage.click();
             shiftBrowserTab(1);
+            String linkAddress = WebDriverRunner.getWebDriver().getCurrentUrl();
+            String linkToHTCCategory = linkAddress + "elektronika/telefony/htc-ru/";
             Storefront storefront = new Storefront();
             if (storefront.cookie.exists()) {
                 storefront.cookie.click();
             }
             storefront.blockWithProducts.scrollIntoView("{behavior: \"instant\", block: \"center\", inline: \"center\"}");
             Selenide.screenshot("Test-case 01." + i + " Block with products");
-            storefront.navigateToHorizontalMenu_HTC();
+            Selenide.open(linkToHTCCategory);
+            //storefront.navigateToHorizontalMenu_HTC();
             Selenide.screenshot("Test-case 01." + i + " Category page 'Grid'");
             storefront.navigateToProductListView_ListWithoutOptions();
             Selenide.screenshot("Test-case 01." + i + " Category page 'ListWithoutOptions'");
