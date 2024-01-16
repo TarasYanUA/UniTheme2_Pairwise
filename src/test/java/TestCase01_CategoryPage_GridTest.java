@@ -3,10 +3,12 @@ import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.testng.annotations.Test;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
-import static com.codeborne.selenide.Selenide.switchTo;
+
+import static com.codeborne.selenide.Selenide.*;
 
 public class TestCase01_CategoryPage_GridTest extends TestRunner {
     static int rowNumber;
@@ -15,32 +17,45 @@ public class TestCase01_CategoryPage_GridTest extends TestRunner {
     String className = this.getClass().getSimpleName();
 
     @Test(priority = 1)
-    public void preconditions(){
+    public void preconditions() {
         CsCart csCart = new CsCart();
         csCart.navigateToSection_DesignLayouts();   //Устанавливаем макет Light v2
         ThemeSettings_ProductLists themeSettings_productLists = new ThemeSettings_ProductLists();
         themeSettings_productLists.ThemeProductLists_SSOCP_Off();   //Выкл. отображение подкатегорий на странице категории
         themeSettings_productLists.ThemeProductLists_DCD_Dont();    //Выкл. отображение описания категории на странице категории
+        //Настраиваем характеристику Бренд для отображения на странице категории
+        csCart.menu_Products.hover();
+        csCart.section_Features.click();
+        csCart.featureBrand.click();
+        if (!csCart.setting_showInProductList.isSelected()) {
+            csCart.setting_showInProductList.click();
+        }
+        //Настраиваем товар без наличия
+        csCart.searchProductByCode("O0071FR7HZ");
+        csCart.setOutOfStock();
+        csCart.button_Save.click();
+        //Настраиваем товар без наличия и с действием “Предзаказ”
+        csCart.searchProductByCode("Y0070SQYFT");
+        csCart.setOutOfStock();
+        csCart.action_outOfStock.selectOptionByValue("B");
+        csCart.button_Save.click();
+        //Настраиваем товар без цены
+        csCart.searchProductByCode("U00684Y11J");
+        csCart.setZeroPrice();
+        csCart.button_Save.click();
+        //Настраиваем товар без цены и с действием “Попросить покупателя ввести цену"
+        csCart.searchProductByCode("U0069R50SC");
+        csCart.setZeroPrice();
+        csCart.action_ZeroPrice.selectOptionByValue("A");
+        csCart.button_Save.click();
+        //Настраиваем товар со скидкой
+        csCart.searchProductByCode("J00670N9NC");
+        csCart.setRecommendedPrice("19000");
+        csCart.button_Save.click();
+
     }
 
-
-/*    @Test(priority = 2)
-    public void createExcel() throws IOException {
-        Workbook book = new HSSFWorkbook();
-        Sheet sheet = book.createSheet("Sheet1");   //Создаём лист экселя
-        Row row = sheet.createRow(0);   //Создаём рядок в экселе
-
-        //Создаём ячейки в экселе и сразу задаём значение в ячейке
-        row.createCell(0).setCellValue("Значение 1");
-        row.createCell(1).setCellValue("Значение 2");
-        row.createCell(2).setCellValue("Значение 3");
-
-
-        book.write(new FileOutputStream("Second test.xlsx"));   // Записываем всё в файл/ Когда всё будет готово, то название файла должно быть переменной className
-        book.close();
-    }*/
-
-    @Test(priority = 5)
+    @Test(priority = 2, dependsOnMethods = "preconditions")
     public void readFromExcel() throws IOException {
         HSSFWorkbook myExcelBook = new HSSFWorkbook(new FileInputStream(className + ".xlsx"));
         HSSFSheet myExcelSheet = myExcelBook.getSheetAt(0);
@@ -64,7 +79,7 @@ public class TestCase01_CategoryPage_GridTest extends TestRunner {
         myExcelBook.close();
     }
 
-    @Test(priority = 10)
+    @Test(priority = 3, dependsOnMethods = "preconditions")
     public void check_TestCase01_CategoryPage_Grid() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         CsCart csCart = new CsCart();
         ColorScheme colorScheme = new ColorScheme();
@@ -74,10 +89,10 @@ public class TestCase01_CategoryPage_GridTest extends TestRunner {
             for (int k = 0; k < testCases[i].length; k++) {
                 System.out.println(testCases[i][k]);
 
-                if(testCases[i][k].startsWith("ColSch_")) {
+                if (testCases[i][k].startsWith("ColSch_")) {
                     colorScheme.getClass().getMethod(testCases[i][k]).invoke(colorScheme); //динамический вызов метода из класса по названию метода
                 }
-                if(testCases[i][k].startsWith("ThemeProductLists_")) {
+                if (testCases[i][k].startsWith("ThemeProductLists_")) {
                     themeSettings_productLists.getClass().getMethod(testCases[i][k]).invoke(themeSettings_productLists); //динамический вызов метода из класса по названию метода
                 }
             }

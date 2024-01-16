@@ -8,12 +8,14 @@ public class Storefront {
 
     SelenideElement cookie = $(".cm-btn-success");
     SelenideElement blockWithProducts = $("div.ty-mainbox-container.clearfix .ut2-gl__image");
+    SelenideElement htcProduct = $x("//a[contains(text(), 'HTC Wildfire')]");
     SelenideElement horizontalMenu_menuElectronic = $(".ty-menu__wrapper .ty-menu-item__electronics");
     private final SelenideElement horizontalMenu_menuHTC = $x("//li[contains(@class, 'ty-menu-item__electronics')]//a[@title='HTC']");
     public void navigateToHorizontalMenu_HTC(){
         executeJavaScript("window.scrollTo(0, -document.body.scrollHeight);");
         horizontalMenu_menuElectronic.hover().click();
         horizontalMenu_menuHTC.click();
+        htcProduct.hover();
     }
     private final SelenideElement grid_ProductListView = $(".ty-icon.ty-icon-products-multicolumns");
     public void navigateToProductListView_Grid(){
