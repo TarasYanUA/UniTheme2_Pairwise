@@ -108,7 +108,7 @@ public class TestCase01_CategoryPage_GridTest extends TestRunner {
             storefront.blockWithProducts.scrollIntoView("{behavior: \"instant\", block: \"center\", inline: \"center\"}");
             Selenide.screenshot("Test-case 01." + i + " Block with products");
             Selenide.open(linkToHTCCategory);
-            //storefront.navigateToHorizontalMenu_HTC();
+            storefront.htcProduct.hover();
             Selenide.screenshot("Test-case 01." + i + " Category page 'Grid'");
             storefront.navigateToProductListView_ListWithoutOptions();
             Selenide.screenshot("Test-case 01." + i + " Category page 'ListWithoutOptions'");
