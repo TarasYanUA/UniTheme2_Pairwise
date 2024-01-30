@@ -119,6 +119,7 @@ public class TestCase01_CategoryPage_GridTest extends TestRunner {
             storefront.navigateToProductListView_ListWithoutOptions();
             Selenide.screenshot("Test-case 01." + i + " Category page 'ListWithoutOptions' (RTL)");
             storefront.navigateToProductListView_Grid();
+            storefront.htcProduct.hover();
             Selenide.screenshot("Test-case 01." + i + " Category page 'Grid' (RTL)");
 
             switchTo().window(1).close();
