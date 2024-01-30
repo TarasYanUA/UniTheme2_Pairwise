@@ -77,7 +77,7 @@ public class TestCase01_CategoryPage_GridTest extends TestRunner {
         myExcelBook.close();
     }
 
-    @Test(priority = 3, dependsOnMethods = "preconditions")
+    @Test(priority = 3, dependsOnMethods = "readFromExcel")
     public void check_TestCase01_CategoryPage_Grid() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         CsCart csCart = new CsCart();
         ColorScheme colorScheme = new ColorScheme();
