@@ -1,5 +1,7 @@
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
+import org.openqa.selenium.By;
+
 import static com.codeborne.selenide.Selenide.*;
 
 public class CsCart {
@@ -57,10 +59,10 @@ public class CsCart {
     }
     SelenideElement action_outOfStock = $("#elm_out_of_stock_actions");
     private SelenideElement field_Price = $("#elm_price_price");
-    public void setZeroPrice(){
+    public void setPrice(String price){
         field_Price.click();
         field_Price.clear();
-        field_Price.sendKeys("0");
+        field_Price.sendKeys(price);
     }
     SelenideElement action_ZeroPrice = $("#elm_zero_price_action");
     private SelenideElement field_RecommendedPrice = $("#elm_list_price");
@@ -70,9 +72,20 @@ public class CsCart {
         field_RecommendedPrice.sendKeys(recommendedPrice);
     }
 
-    SelenideElement menu_Products = $x("//li[@class='dropdown nav__header-main-menu-item ']//a[@href='#products']");
+    SelenideElement menu_Products = $x("//li[contains(@class, 'dropdown nav__header-main-menu-item')]//a[@href='#products']");
     SelenideElement section_Features = $("a[href$='product_features.manage']");
+    SelenideElement section_Products = $("a[href$='dispatch=products.manage']");
     SelenideElement featureBrand = $("a[href$='feature_id=18'][data-ca-external-click-id]");
     SelenideElement setting_showInProductList = $("input[id='elm_feature_display_on_catalog_18']");
-
+    SelenideElement button_AddNew = $x("//span[@class='cs-icon dropdown-icon icon-plus']");
+    SelenideElement button_AddNewProduct = $("a[href$='dispatch=products.add']");
+    SelenideElement field_ProductName = $(By.id("product_description_product"));
+    public void clickAndType_field_ProductName(String productName) {
+        field_ProductName.click();
+        field_ProductName.setValue(productName);
+    }
+    SelenideElement button_SelectCategory = $("a[id*='opener_picker_object_picker_advanced']");
+    SelenideElement selectCategory_HTC_ForProduct = $("#input_cat_236");
+    SelenideElement button_Save_InsidePopUp = $(".buttons-container-picker .cm-form-dialog-closer");
+    SelenideElement button_CreateProduct = $(".cm-product-save-buttons");
 }

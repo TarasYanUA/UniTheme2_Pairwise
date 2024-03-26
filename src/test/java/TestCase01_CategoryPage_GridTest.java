@@ -1,3 +1,4 @@
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.WebDriverRunner;
 import org.apache.poi.hssf.usermodel.HSSFRow;
@@ -40,22 +41,35 @@ public class TestCase01_CategoryPage_GridTest extends TestRunner {
         csCart.button_Save.click();
         //Настраиваем товар без цены
         csCart.searchProductByCode("U00684Y11J");
-        csCart.setZeroPrice();
+        csCart.setPrice("0");
         csCart.button_Save.click();
         //Настраиваем товар без цены и с действием “Попросить покупателя ввести цену"
         csCart.searchProductByCode("U0069R50SC");
-        csCart.setZeroPrice();
+        csCart.setPrice("0");
         csCart.action_ZeroPrice.selectOptionByValue("A");
         csCart.button_Save.click();
         //Настраиваем товар со скидкой
         csCart.searchProductByCode("J00670N9NC");
         csCart.setRecommendedPrice("19000");
         csCart.button_Save.click();
+        //Создаём новый товар без изображений
+        csCart.menu_Products.hover();
+        csCart.section_Products.click();
+        if(!$x("//a[text()='" + className + "']").exists()) {
+            csCart.button_AddNew.click();
+            csCart.button_AddNewProduct.shouldBe(Condition.enabled).click();
+            csCart.clickAndType_field_ProductName(className);
+            csCart.button_SelectCategory.doubleClick();
+            csCart.selectCategory_HTC_ForProduct.shouldBe(Condition.enabled).click();
+            csCart.button_Save_InsidePopUp.click();
+            csCart.setPrice("14500");
+            csCart.button_CreateProduct.click();
+        }
     }
 
     @Test(priority = 2, dependsOnMethods = "preconditions")
     public void readFromExcel() throws IOException {
-        HSSFWorkbook myExcelBook = new HSSFWorkbook(new FileInputStream(className + ".xlsx"));
+        HSSFWorkbook myExcelBook = new HSSFWorkbook(new FileInputStream("03 " + className + ".xlsx"));
         HSSFSheet myExcelSheet = myExcelBook.getSheetAt(0);
 
         rowNumber = myExcelSheet.getPhysicalNumberOfRows();
@@ -100,7 +114,7 @@ public class TestCase01_CategoryPage_GridTest extends TestRunner {
             csCart.storefrontMainPage.click();
             shiftBrowserTab(1);
             String linkAddress = WebDriverRunner.getWebDriver().getCurrentUrl();
-            String linkToHTCCategory = linkAddress + "elektronika/telefony/htc-ru/";
+            String linkToHTCCategory = linkAddress + "elektronika/telefony/htc/";
             Storefront storefront = new Storefront();
             if (storefront.cookie.exists()) {
                 storefront.cookie.click();
