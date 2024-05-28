@@ -4,8 +4,8 @@ import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selenide.*;
 
-public class CsCart {
-    SelenideElement button_Save = $(".cm-submit.btn-primary");
+public class CsCart implements CheckMenuToBeActive{
+    SelenideElement button_Save = $(".btn.btn-primary.cm-submit");
     SelenideElement addonsDropDown = $("#elm_menu_addons");
     SelenideElement addonsManagementPage = $("#elm_menu_addons_downloaded_add_ons");
     private void navigateToAddonsPage() {
@@ -13,14 +13,18 @@ public class CsCart {
         addonsManagementPage.click();
     }
 
-    SelenideElement menuDesign = $("#elm_menu_design");
-    SelenideElement section_Layouts = $("#elm_menu_design_layouts");
+
+    //Меню "Веб-сайт -- Темы -- Макеты"
+    private SelenideElement menu_Website = $("a[href$='dispatch=themes.manage'].main-menu-1__link");
+    private SelenideElement section_Themes = $("#website_themes");
+    private SelenideElement sectionLayouts = $(".nav__actions-bar a[href$='block_manager.manage']");
     SelenideElement layout_Lightv2 = $("a[href$='block_manager.manage&s_layout=6']");
     SelenideElement gearwheelOfActiveLayout = $(".with-menu.active .dropdown-toggle");
     SelenideElement button_makeByDefault = $(".with-menu.active a[href*='block_manager.set_default_layout']");
-    public void navigateToSection_DesignLayouts(){
-        menuDesign.hover();
-        section_Layouts.click();
+    public void navigateToSection_WebsiteLayouts(){
+        checkMenuToBeActive("dispatch=themes.manage", menu_Website);
+        section_Themes.click();
+        sectionLayouts.click();
         layout_Lightv2.click();
         gearwheelOfActiveLayout.hover().click();
         if(!$$(".with-menu.active a[href*='block_manager.set_default_layout']").isEmpty()){
@@ -45,7 +49,7 @@ public class CsCart {
         ColorScheme.setActiveColorScheme();
     }
 
-    private SelenideElement field_Search = $(".search__group .search__input.search__input--collapse");
+    private SelenideElement field_Search = $(".cm-autocomplete-off.search__input");
     public void searchProductByCode(String productCode){
         field_Search.click();
         field_Search.sendKeys(productCode);
@@ -72,14 +76,28 @@ public class CsCart {
         field_RecommendedPrice.sendKeys(recommendedPrice);
     }
 
-    SelenideElement menu_Products = $x("//li[contains(@class, 'dropdown nav__header-main-menu-item')]//a[@href='#products']");
-    SelenideElement section_Features = $("a[href$='product_features.manage']");
-    SelenideElement section_Products = $("a[href$='dispatch=products.manage']");
-    SelenideElement featureBrand = $("a[href$='feature_id=18'][data-ca-external-click-id]");
+    //Меню "Товары -- Характеристики"
+    SelenideElement menu_Products = $x("a[href$='dispatch=products.manage'].main-menu-1__link");
+    SelenideElement section_Features = $(By.id("products_features"));
+    SelenideElement featureBrand = $("a[data-ca-external-click-id=\"opener_group18\"]");
     SelenideElement setting_showInProductList = $("input[id='elm_feature_display_on_catalog_18']");
-    SelenideElement button_AddNew = $x("//span[@class='cs-icon dropdown-icon icon-plus']");
+
+    public void navigateToSection_Features(){
+        checkMenuToBeActive("dispatch=products.manage", menu_Products);
+        section_Features.click();
+    }
+
+
+    //Меню "Товары --Товары"
+    SelenideElement section_Products = $(By.id("products_products"));
     SelenideElement button_AddNewProduct = $("a[href$='dispatch=products.add']");
     SelenideElement field_ProductName = $(By.id("product_description_product"));
+
+    public void navigateToSection_Products(){
+        checkMenuToBeActive("dispatch=products.manage", menu_Products);
+        section_Products.click();
+    }
+
     public void clickAndType_field_ProductName(String productName) {
         field_ProductName.click();
         field_ProductName.setValue(productName);

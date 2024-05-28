@@ -7,7 +7,7 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 public class TestRunner {
-    public static final String BASIC_URL = "https://trs.test.abt.team/4172ultru/admin.php?dispatch=addons.manage";
+    public static final String BASIC_URL = "https://trs.test.abt.team/4181ultru/admin.php?dispatch=abt__ut2.settings&selected_section=general";
 
     @BeforeClass
     public void openBrowser() {

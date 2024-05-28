@@ -19,45 +19,49 @@ public class TestCase01_CategoryPage_GridTest extends TestRunner {
     @Test(priority = 1)
     public void preconditions() {
         CsCart csCart = new CsCart();
-        csCart.navigateToSection_DesignLayouts();   //Устанавливаем макет Light v2
+        csCart.navigateToSection_WebsiteLayouts();   //Устанавливаем макет Light v2
         ThemeSettings_ProductLists themeSettings_productLists = new ThemeSettings_ProductLists();
         themeSettings_productLists.ThemeProductLists_SSOCP_Off();   //Выкл. отображение подкатегорий на странице категории
         themeSettings_productLists.ThemeProductLists_DCD_Dont();    //Выкл. отображение описания категории на странице категории
+
         //Настраиваем характеристику Бренд для отображения на странице категории
-        csCart.menu_Products.hover();
-        csCart.section_Features.click();
+        csCart.navigateToSection_Features();
         csCart.featureBrand.click();
         if (!csCart.setting_showInProductList.isSelected()) {
             csCart.setting_showInProductList.click();
         }
+
         //Настраиваем товар без наличия
         csCart.searchProductByCode("O0071FR7HZ");
         csCart.setOutOfStock();
         csCart.button_Save.click();
+
         //Настраиваем товар без наличия и с действием “Предзаказ”
         csCart.searchProductByCode("Y0070SQYFT");
         csCart.setOutOfStock();
         csCart.action_outOfStock.selectOptionByValue("B");
         csCart.button_Save.click();
+
         //Настраиваем товар без цены
         csCart.searchProductByCode("U00684Y11J");
         csCart.setPrice("0");
         csCart.button_Save.click();
+
         //Настраиваем товар без цены и с действием “Попросить покупателя ввести цену"
         csCart.searchProductByCode("U0069R50SC");
         csCart.setPrice("0");
         csCart.action_ZeroPrice.selectOptionByValue("A");
         csCart.button_Save.click();
+
         //Настраиваем товар со скидкой
         csCart.searchProductByCode("J00670N9NC");
         csCart.setRecommendedPrice("19000");
         csCart.button_Save.click();
+
         //Создаём новый товар без изображений
-        csCart.menu_Products.hover();
-        csCart.section_Products.click();
+        csCart.navigateToSection_Products();
         if(!$x("//a[text()='" + className + "']").exists()) {
-            csCart.button_AddNew.click();
-            csCart.button_AddNewProduct.shouldBe(Condition.enabled).click();
+            csCart.button_AddNewProduct.click();
             csCart.clickAndType_field_ProductName(className);
             csCart.button_SelectCategory.doubleClick();
             csCart.selectCategory_HTC_ForProduct.shouldBe(Condition.enabled).click();
