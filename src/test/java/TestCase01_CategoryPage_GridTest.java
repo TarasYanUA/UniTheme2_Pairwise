@@ -116,7 +116,7 @@ public class TestCase01_CategoryPage_GridTest extends TestRunner {
             csCart.button_Save.click();
 
             //Здесь перечень шагов, которые нужно выполнить после настроек
-            csCart.storefrontMainPage.click();
+            csCart.navigateTo_Storefront();
             shiftBrowserTab(1);
             String linkAddress = WebDriverRunner.getWebDriver().getCurrentUrl();
             String linkToHTCCategory = linkAddress + "elektronika/telefony/htc/";

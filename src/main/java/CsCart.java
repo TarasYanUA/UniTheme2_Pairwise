@@ -1,19 +1,26 @@
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
+import com.codeborne.selenide.WebDriverRunner;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selenide.*;
 
 public class CsCart implements CheckMenuToBeActive{
     SelenideElement button_Save = $(".btn.btn-primary.cm-submit");
+
+    public void navigateTo_Storefront() {
+        String currentUrl = WebDriverRunner.url();
+        String[] url = currentUrl.split("admin.php");
+        executeJavaScript("window.open('" + url[0] + "')");
+    }
+
+    //Меню "Модули -- Скачанные модули"
     public SelenideElement menu_Addons = $("a[href$='dispatch=addons.manage'].main-menu-1__link");
     public SelenideElement section_DownloadedAddons = $("#addons_downloaded_add_ons");
-
     private void navigateTo_DownloadedAddonsPage() {
         checkMenuToBeActive("dispatch=addons.manage", menu_Addons);
         section_DownloadedAddons.click();
     }
-
 
     //Меню "Веб-сайт -- Темы -- Макеты"
     private SelenideElement menu_Website = $("a[href$='dispatch=themes.manage'].main-menu-1__link");
@@ -34,7 +41,6 @@ public class CsCart implements CheckMenuToBeActive{
         }
     }
 
-    SelenideElement storefrontMainPage = $(".cs-icon.icon-shopping-cart");
     SelenideElement themeSectionsOnManagementPage = $x("//tr[@id='addon_abt__unitheme2']//button[@class='btn dropdown-toggle']");
     SelenideElement themeSettings = $("div[class='btn-group dropleft open'] a[href$='abt__ut2.settings']");
     SelenideElement colorSchemeSettings = $("div[class='btn-group dropleft open'] a[href$='abt__ut2.less_settings']");

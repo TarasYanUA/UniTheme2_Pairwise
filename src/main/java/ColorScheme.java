@@ -10,7 +10,7 @@ public class ColorScheme extends CsCart {
     }
 
     static SelenideElement fieldOfActiveColorScheme = $("a[id^='sw_select_'][id$='_wrap_currency']");
-    static SelenideElement activeColorScheme = $x("//div[@class='language-wrap']//a[contains(text(),'CS-Cart')]");
+    static SelenideElement activeColorScheme = $x("//div[@class='language-wrap']//a[contains(.,'CS-Cart')]");
 
     public static void setActiveColorScheme() {
         fieldOfActiveColorScheme.click();
