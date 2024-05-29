@@ -24,6 +24,7 @@ public class TestCase01_CategoryPage_GridTest extends TestRunner {
         themeSettings_productLists.ThemeProductLists_SSOCP_Off();   //Выкл. отображение подкатегорий на странице категории
         themeSettings_productLists.ThemeProductLists_DCD_Dont();    //Выкл. отображение описания категории на странице категории
 
+
         //Настраиваем характеристику Бренд для отображения на странице категории
         csCart.navigateToSection_Features();
         csCart.featureBrand.click();
@@ -63,7 +64,7 @@ public class TestCase01_CategoryPage_GridTest extends TestRunner {
         if(!$x("//a[text()='" + className + "']").exists()) {
             csCart.button_AddNewProduct.click();
             csCart.clickAndType_field_ProductName(className);
-            csCart.button_SelectCategory.doubleClick();
+            csCart.button_SelectCategory.click();
             csCart.selectCategory_HTC_ForProduct.shouldBe(Condition.enabled).click();
             csCart.button_Save_InsidePopUp.click();
             csCart.setPrice("14500");

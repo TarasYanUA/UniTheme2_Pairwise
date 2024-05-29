@@ -6,11 +6,12 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class CsCart implements CheckMenuToBeActive{
     SelenideElement button_Save = $(".btn.btn-primary.cm-submit");
-    SelenideElement addonsDropDown = $("#elm_menu_addons");
-    SelenideElement addonsManagementPage = $("#elm_menu_addons_downloaded_add_ons");
-    private void navigateToAddonsPage() {
-        addonsDropDown.hover();
-        addonsManagementPage.click();
+    public SelenideElement menu_Addons = $("a[href$='dispatch=addons.manage'].main-menu-1__link");
+    public SelenideElement section_DownloadedAddons = $("#addons_downloaded_add_ons");
+
+    private void navigateTo_DownloadedAddonsPage() {
+        checkMenuToBeActive("dispatch=addons.manage", menu_Addons);
+        section_DownloadedAddons.click();
     }
 
 
@@ -38,12 +39,12 @@ public class CsCart implements CheckMenuToBeActive{
     SelenideElement themeSettings = $("div[class='btn-group dropleft open'] a[href$='abt__ut2.settings']");
     SelenideElement colorSchemeSettings = $("div[class='btn-group dropleft open'] a[href$='abt__ut2.less_settings']");
     public void navigateTo_ThemeSettings(){
-        navigateToAddonsPage();
+        navigateTo_DownloadedAddonsPage();
         themeSectionsOnManagementPage.click();
         themeSettings.click();
     }
     public void navigateTo_ColorSchemeSettings(){
-        navigateToAddonsPage();
+        navigateTo_DownloadedAddonsPage();
         themeSectionsOnManagementPage.click();
         colorSchemeSettings.click();
         ColorScheme.setActiveColorScheme();
@@ -77,7 +78,7 @@ public class CsCart implements CheckMenuToBeActive{
     }
 
     //Меню "Товары -- Характеристики"
-    SelenideElement menu_Products = $x("a[href$='dispatch=products.manage'].main-menu-1__link");
+    SelenideElement menu_Products = $("a[href$='dispatch=products.manage'].main-menu-1__link");
     SelenideElement section_Features = $(By.id("products_features"));
     SelenideElement featureBrand = $("a[data-ca-external-click-id=\"opener_group18\"]");
     SelenideElement setting_showInProductList = $("input[id='elm_feature_display_on_catalog_18']");
