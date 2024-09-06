@@ -4,6 +4,9 @@ import com.codeborne.selenide.WebDriverRunner;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.testng.annotations.Test;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -74,8 +77,8 @@ public class TestCase01_CategoryPage_GridTest extends TestRunner {
 
     @Test(priority = 2, dependsOnMethods = "preconditions")
     public void readFromExcel() throws IOException {
-        HSSFWorkbook myExcelBook = new HSSFWorkbook(new FileInputStream("03 " + className + ".xlsx"));
-        HSSFSheet myExcelSheet = myExcelBook.getSheetAt(0);
+        XSSFWorkbook myExcelBook = new XSSFWorkbook(new FileInputStream("03 " + className + ".xlsx"));
+        XSSFSheet myExcelSheet = myExcelBook.getSheetAt(0);
 
         rowNumber = myExcelSheet.getPhysicalNumberOfRows();
         columnNumber = myExcelSheet.getRow(0).getPhysicalNumberOfCells();
@@ -86,7 +89,7 @@ public class TestCase01_CategoryPage_GridTest extends TestRunner {
         System.out.println("\nДвумерный массив:");
 
         for (int k = 1; k < rowNumber; k++) {
-            HSSFRow row = myExcelSheet.getRow(k);
+            XSSFRow row = myExcelSheet.getRow(k);
             for (int i = 0; i < columnNumber; i++) {
                 String stringOfRow = row.getCell(i).getStringCellValue();
                 testCases[k - 1][i] = stringOfRow;
