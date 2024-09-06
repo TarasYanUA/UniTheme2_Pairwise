@@ -20,21 +20,21 @@ public class Storefront {
         horizontalMenu_menuHTC.click();
         htcProduct.scrollIntoView(true).hover();
     }
-    private final SelenideElement grid_ProductListView = $(".ty-icon.ty-icon-products-multicolumns");
+    private final SelenideElement grid_ProductListView = $(".ty-icon.ut2-icon-products-multicolumns");
     public void navigateToProductListView_Grid(){
         executeJavaScript("window.scrollTo(0, -document.body.scrollHeight);");
         grid_ProductListView.click();
         $("div#ajax_loading_box[style = 'display: block;']").shouldBe(Condition.exist);
         Selenide.sleep(1500);
     }
-    private final SelenideElement listWithoutOptions_ProductListView = $(".ty-icon.ty-icon-products-without-options");
+    private final SelenideElement listWithoutOptions_ProductListView = $(".ty-icon.ut2-icon-products-without-options");
     public void navigateToProductListView_ListWithoutOptions(){
         executeJavaScript("window.scrollTo(0, -document.body.scrollHeight);");
         listWithoutOptions_ProductListView.click();
         $("div#ajax_loading_box[style = 'display: block;']").shouldBe(Condition.exist);
         Selenide.sleep(1500);
     }
-    private final SelenideElement compactList_ProductListView = $("div[class='ut2-sorting-wrap'] span[class='ty-icon ty-icon-short-list']");
+    private final SelenideElement compactList_ProductListView = $(".ty-icon.ut2-icon-short-list");
     public void navigateToProductListView_CompactList(){
         executeJavaScript("window.scrollTo(0, -document.body.scrollHeight);");
         compactList_ProductListView.click();
