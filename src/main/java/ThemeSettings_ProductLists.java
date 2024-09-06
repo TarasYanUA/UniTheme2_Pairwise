@@ -256,18 +256,18 @@ public class ThemeSettings_ProductLists extends CsCart {
         }
     }
 
-    SelenideElement checkbox_ShowYouSave = $(By.id("settings.abt__ut2.product_list.products_multicolumns.show_you_save.desktop"));
-    public void ThemeProductLists_SYS_On(){
+    SelenideElement select_ShowYouSave = $(By.id("settings.abt__ut2.product_list.show_you_save.desktop"));
+    public void ThemeProductLists_SYS_Dont(){
         condition_ThemeSettings_tabProductLists();
-        if(!checkbox_ShowYouSave.isSelected()){
-            checkbox_ShowYouSave.click();
-        }
+        select_ShowYouSave.selectOptionByValue("none");
     }
-    public void ThemeProductLists_SYS_Off(){
+    public void ThemeProductLists_SYS_Full(){
         condition_ThemeSettings_tabProductLists();
-        if(checkbox_ShowYouSave.isSelected()){
-            checkbox_ShowYouSave.click();
-        }
+        select_ShowYouSave.selectOptionByValue("full");
+    }
+    public void ThemeProductLists_SYS_Short(){
+        condition_ThemeSettings_tabProductLists();
+        select_ShowYouSave.selectOptionByValue("short");
     }
 
     SelenideElement select_ShowStandardImageGallery = $(By.id("settings.abt__ut2.product_list.products_multicolumns.show_gallery.desktop"));
